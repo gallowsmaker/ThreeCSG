@@ -1,12 +1,11 @@
 'use strict';
 
-import {Geometry} from 'three/src/core/geometry'
-import {Mesh} from 'three/src/objects/mesh'
+import {Geometry} from 'three/src/core/Geometry'
+import {Mesh} from 'three/src/objects/Mesh'
 import {Matrix4} from 'three/src/math/Matrix4'
 import {Vector2} from 'three/src/math/Vector2'
 import {Vector3} from 'three/src/math/Vector3'
 import {Face3} from 'three/src/core/Face3'
-import {Face4} from 'three/src/core/Face4'
 
 	const
 		EPSILON = 1e-5,
@@ -58,30 +57,6 @@ import {Face4} from 'three/src/core/Face4'
 				vertex = geometry.vertices[ face.c ];
                                 uvs = faceVertexUvs ? new Vector2( faceVertexUvs[2].x, faceVertexUvs[2].y ) : null;
                                 vertex = new ThreeBSP.Vertex( vertex.x, vertex.y, vertex.z, face.vertexNormals[2], uvs );
-				vertex.applyMatrix4(this.matrix);
-				polygon.vertices.push( vertex );
-			} else if ( typeof Face4 ) {
-				vertex = geometry.vertices[ face.a ];
-                                uvs = faceVertexUvs ? new Vector2( faceVertexUvs[0].x, faceVertexUvs[0].y ) : null;
-                                vertex = new ThreeBSP.Vertex( vertex.x, vertex.y, vertex.z, face.vertexNormals[0], uvs );
-				vertex.applyMatrix4(this.matrix);
-				polygon.vertices.push( vertex );
-
-				vertex = geometry.vertices[ face.b ];
-                                uvs = faceVertexUvs ? new Vector2( faceVertexUvs[1].x, faceVertexUvs[1].y ) : null;
-                                vertex = new ThreeBSP.Vertex( vertex.x, vertex.y, vertex.z, face.vertexNormals[1], uvs );
-				vertex.applyMatrix4(this.matrix);
-				polygon.vertices.push( vertex );
-
-				vertex = geometry.vertices[ face.c ];
-                                uvs = faceVertexUvs ? new Vector2( faceVertexUvs[2].x, faceVertexUvs[2].y ) : null;
-                                vertex = new ThreeBSP.Vertex( vertex.x, vertex.y, vertex.z, face.vertexNormals[2], uvs );
-				vertex.applyMatrix4(this.matrix);
-				polygon.vertices.push( vertex );
-
-				vertex = geometry.vertices[ face.d ];
-                                uvs = faceVertexUvs ? new Vector2( faceVertexUvs[3].x, faceVertexUvs[3].y ) : null;
-                                vertex = new ThreeBSP.Vertex( vertex.x, vertex.y, vertex.z, face.vertexNormals[3], uvs );
 				vertex.applyMatrix4(this.matrix);
 				polygon.vertices.push( vertex );
 			} else {
